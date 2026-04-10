@@ -62,7 +62,6 @@ The component prefix is derived from the file paths in the diff. Examples:
 - `project:` - changes to `package.json`, `tsconfig.json`, `.eslintrc.js`,
   `action.yml`, `.gitignore`, or other project config
 - `docs:` - changes to `README.md`, `CONTRIBUTING.md`, `CHANGELOG.md`
-- `dist:` - changes to the bundled `dist/` output
 - `claude/skills:` `claude/rules:` - changes to `.claude/` configuration
 
 If changes span multiple unrelated components, pick the most significant
