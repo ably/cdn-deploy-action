@@ -1,6 +1,6 @@
 {
   "name": "@ably/cdn-deploy-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GitHub Action for use in Ably SDK repository workflows, deploying versioned build artifacts to the CDN S3 bucket (prod-cdn.ably.com).",
   "scripts": {
     "typecheck": "tsc",

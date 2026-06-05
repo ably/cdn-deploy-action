@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.1](https://github.com/ably/cdn-deploy-action/tree/v1.0.1) (2026-06-05)
+
+[Full Changelog](https://github.com/ably/cdn-deploy-action/compare/v1.0.0...v1.0.1)
+
+[\#4](https://github.com/ably/cdn-deploy-action/pull/4) fixes the action failing with `Input required and not supplied: source-dir`.
+
 ## [1.0.0](https://github.com/ably/cdn-deploy-action/tree/v1.0.0) (2026-04-13)
 
 Initial release of the shared CDN deploy action, extracting the common `scripts/cdn_deploy.js` logic from ably-js, ably-chat-js, and ably-ai-transport-js into a reusable GitHub Action.
