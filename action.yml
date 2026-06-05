@@ -14,6 +14,16 @@ runs:
       shell: bash
     - run: npx --prefix ${{ github.action_path }} tsx ${{ github.action_path }}/src/index.ts
       shell: bash
+      # Composite actions don't auto-populate INPUT_* env vars (only JS actions do),
+      # so we set them explicitly here. @actions/core getInput maps a name to
+      # INPUT_<NAME> by uppercasing and replacing spaces with underscores - hyphens
+      # are kept, so 'source-dir' -> INPUT_SOURCE-DIR. Keep the hyphens.
+      env:
+        INPUT_SOURCE-DIR: ${{ inputs.source-dir }}
+        INPUT_FILE-REGEX: ${{ inputs.file-regex }}
+        INPUT_TAG: ${{ inputs.tag }}
+        INPUT_BUCKET: ${{ inputs.bucket }}
+        INPUT_ROOT: ${{ inputs.root }}
 inputs:
   source-dir:
     description: 'Directory containing files to upload (e.g. "dist", "build")'

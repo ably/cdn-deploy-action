@@ -25,3 +25,20 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
+
+  self-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Create empty fixture dir
+        run: mkdir -p test-fixture
+
+      - name: Run composite action against empty fixture
+        uses: ./
+        with:
+          source-dir: test-fixture
+          file-regex: ^nothing-matches$
+          tag: 0.0.0-test
+          bucket: test-bucket
+          root: test-root
