@@ -14,13 +14,10 @@ runs:
       shell: bash
     - run: npx --prefix ${{ github.action_path }} tsx ${{ github.action_path }}/src/index.ts
       shell: bash
-      # Composite actions don't auto-populate INPUT_* env vars (only JS actions do),
-      # so we pass the inputs explicitly. The names must use underscores, not hyphens:
-      # an env var named INPUT_SOURCE-DIR does not reliably propagate to the child
-      # process, which is why the earlier hyphenated attempt still failed with
-      # "Input required and not supplied: source-dir". src/index.ts reads these
-      # underscore names directly (it does not use @actions/core getInput, whose
-      # name mapping would otherwise force the hyphenated INPUT_SOURCE-DIR form).
+      # Composite actions don't auto-populate INPUT_*, so we pass inputs explicitly.
+      # Use underscores, not hyphens: a hyphenated env var name (INPUT_SOURCE-DIR)
+      # doesn't propagate to the child process. src/index.ts reads these via
+      # core.getInput with the underscore name (getInput('source_dir')).
       env:
         INPUT_SOURCE_DIR: ${{ inputs.source-dir }}
         INPUT_FILE_REGEX: ${{ inputs.file-regex }}
