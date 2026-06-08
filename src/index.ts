@@ -5,10 +5,15 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 async function run(): Promise<void> {
   try {
+    // Composite actions don't populate INPUT_* (actions/runner#665), so
+    // action.yml maps each input to an underscore-named INPUT_* env var that
+    // getInput can read: 'source_dir' -> INPUT_SOURCE_DIR. Underscores, not
+    // hyphens - a hyphenated env var name (INPUT_SOURCE-DIR) does not propagate
+    // to this process, which is why the earlier hyphenated attempt still failed.
     const sourceDir = path.resolve(
-      core.getInput('source-dir', { required: true }),
+      core.getInput('source_dir', { required: true }),
     );
-    const fileRegex = core.getInput('file-regex', { required: true });
+    const fileRegex = core.getInput('file_regex', { required: true });
     const tag = core.getInput('tag', { required: true });
     const bucket = core.getInput('bucket');
     const root = core.getInput('root');

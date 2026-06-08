@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.2](https://github.com/ably/cdn-deploy-action/tree/v1.0.2) (2026-06-08)
+
+[Full Changelog](https://github.com/ably/cdn-deploy-action/compare/v1.0.1...v1.0.2)
+
+[\#8](https://github.com/ably/cdn-deploy-action/pull/8) fixes the action still failing with `Input required and not supplied: source-dir`. The v1.0.1 fix passed inputs under hyphenated env var names, which do not propagate to the script process; inputs are now passed under underscore names and read directly.
+
 ## [1.0.1](https://github.com/ably/cdn-deploy-action/tree/v1.0.1) (2026-06-05)
 
 [Full Changelog](https://github.com/ably/cdn-deploy-action/compare/v1.0.0...v1.0.1)
